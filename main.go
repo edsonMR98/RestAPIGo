@@ -8,11 +8,13 @@ import (
 	"strings"
 )
 
+// Sources define the struct of the source of each article
 type Sources struct {
 	Id   string
 	Name string
 }
 
+// Articles define the struct of each article
 type Articles struct {
 	Source      Sources
 	Author      string
@@ -24,12 +26,16 @@ type Articles struct {
 	Content     string
 }
 
+// News define the API´s news struct
 type News struct {
 	Status       string
 	TotalResults int
 	Articles     []Articles
 }
 
+// splitDescription, take a description with +25words and split it showing the first 25 words
+// d: string description of each article
+// retun string with 25 words
 func splitDescription(d string) string {
 	sliceOfD := strings.Split(d, " ")
 	return strings.Join(sliceOfD[:25], " ")
@@ -64,7 +70,7 @@ func main() {
 			} else {
 				fmt.Println("Description:", description)
 			}
-			
+
 			fmt.Println("")
 		}
 	}
