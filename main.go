@@ -42,7 +42,7 @@ func splitDescription(d string) string {
 }
 
 func main() {
-	response, err := http.Get("https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=565555cabbae4989934af419afac7973")
+	response, err := http.Get(URL_API_KEY)
 	if err != nil {
 		fmt.Printf("The HTTP request failed with error %s\n", err)
 	} else {
@@ -62,7 +62,7 @@ func main() {
 			fmt.Println("Source{ Id:", news.Articles[x].Source.Id, "	Name:", news.Articles[x].Source.Name, "}")
 			fmt.Println("Author:", news.Articles[x].Author)
 			fmt.Println("Title:", news.Articles[x].Title)
-			
+
 			description := news.Articles[x].Description
 			if len(strings.Split(news.Articles[x].Description, " ")) > 25 { // If the Description has more than 25 words...
 				description = splitDescription(news.Articles[x].Description)
